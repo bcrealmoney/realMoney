@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2018 Baidu, Inc. All Rights Reserved.
  */
-package com.realMoney.common.exception;
+package com.realMoney.common.result.exception;
 
 public class CommonException extends RuntimeException {
     private static final long serialVersionUID = 2956675295337329394L;
     private String appName;
-    private String code;
+    private Integer code;
     private String errorMessage;
     private Boolean isAlarm;
     private Integer errorLevel;
@@ -27,17 +27,17 @@ public class CommonException extends RuntimeException {
         super(cause);
     }
 
-    public CommonException(String code, String errorMessage) {
+    public CommonException(Integer code, String errorMessage) {
         super(errorMessage);
         this.code = code;
         this.errorMessage = errorMessage;
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return this.code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 

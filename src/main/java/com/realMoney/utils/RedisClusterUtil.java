@@ -1,6 +1,6 @@
 package com.realMoney.utils;
 
-import com.realMoney.common.Constant;
+import com.realMoney.common.user.Constant;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisCluster;
@@ -16,11 +16,10 @@ public class RedisClusterUtil {
         private static Map<String, JedisCluster> jedisClusterMap = new ConcurrentHashMap<>();
 
         public static JedisCluster getInstance(String cluster){
-
+            if(cluster == null ){
+                cluster = PropertiesUtils.getRedisPropertiesFile().getProperty(Constant.REDIS_KEY);
+            }
             if(jedisClusterMap.get(cluster) == null){
-                if(cluster == null ){
-                    cluster = PropertiesUtils.getRedisPropertiesFile().getProperty(Constant.REDIS_KEY);
-                }
                 synchronized(JedisClusterMultiton.class){
                     if(jedisClusterMap.get(cluster) == null) {
 

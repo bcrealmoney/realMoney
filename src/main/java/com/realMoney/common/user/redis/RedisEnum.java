@@ -1,6 +1,4 @@
-package com.realMoney.common.redis;
-
-import lombok.Data;
+package com.realMoney.common.user.redis;
 
 public enum RedisEnum {
     UserCode("user_code_", 5*60 ,"用户登录验证码保存redis: set  user_code_${username}  ${code} ")

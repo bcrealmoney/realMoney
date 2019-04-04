@@ -2,7 +2,7 @@ package com.realMoney.utils.response;
 
 
 public class Response<T> {
-    private String status;
+    private Integer result;
     private T data;
     private String message;
     private boolean flag;
@@ -10,45 +10,45 @@ public class Response<T> {
     public Response() {
     }
 
-    public Response(String status, T data, String message) {
-        this.status = status;
+    public Response(Integer result, T data, String message) {
+        this.result = result;
         this.data = data;
         this.message = message;
     }
 
 
-    public Response(String status, T data) {
-        this.status = status;
+    public Response(Integer result, T data) {
+        this.result = result;
         this.data = data;
-        if (ResponseCode.SUCCESS.getCode().equals(status)) {
+        if (ResponseCode.SUCCESS.getCode() == result) {
             this.message = ResponseCode.SUCCESS.getDescription();
         }
     }
 
-    public Response(String status, boolean flag, T data) {
-        this.status = status;
+    public Response(Integer result, boolean flag, T data) {
+        this.result = result;
         this.flag = flag;
         this.data = data;
-        if (ResponseCode.SUCCESS.getCode().equals(status)) {
+        if (ResponseCode.SUCCESS.getCode() == result) {
             this.message = ResponseCode.SUCCESS.getDescription();
         }
     }
 
-    public Response(String status, String message) {
-        this.status = status;
+    public Response(Integer result, String message) {
+        this.result = result;
         this.message = message;
     }
 
-    public Response(String status) {
-        this.status = status;
+    public Response(Integer result) {
+        this.result = result;
     }
 
-    public String getStatus() {
-        return this.status;
+    public Integer getResult() {
+        return this.result;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setResult(Integer status) {
+        this.result = result;
     }
 
     public T getData() {
@@ -79,7 +79,7 @@ public class Response<T> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Response{");
-        sb.append("status=").append(this.status);
+        sb.append("result=").append(this.result);
         sb.append(", data=").append(this.data);
         sb.append(", message='").append(this.message).append('\'');
         sb.append('}');

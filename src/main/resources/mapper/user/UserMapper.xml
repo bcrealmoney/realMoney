@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.realMoney.mapper.user.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.realMoney.entity.user.User" >
+        <id column="short_id" property="shortId" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+        <result column="show_name" property="showName" jdbcType="VARCHAR" />
+        <result column="user_head" property="userHead" jdbcType="VARCHAR" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="user_password" property="passWord" jdbcType="VARCHAR" />
+        <result column="third_party_id" property="thirdPartyId" jdbcType="VARCHAR" />
+
+    </resultMap>
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="short_id"  parameterType="com.realMoney.entity.user.User" >
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="userId != null and userId != ''" >
+                user_id,
+            </if>
+            <if test="showName != null and showName != ''" >
+                show_name,
+            </if>
+            <if test="userHead != null and userHead != ''" >
+                user_head,
+            </if>
+            <if test="userName != null and userName != ''" >
+                user_name,
+            </if>
+            <if test="passWord != null and passWord != ''" >
+                user_password,
+            </if>
+            <if test="thirdPartyId != null and thirdPartyId != ''" >
+                third_party_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="userId != null and userId != ''" >
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="showName != null and showName != ''" >
+                #{showName,jdbcType=VARCHAR},
+            </if>
+            <if test="userHead != null and userHead != ''" >
+                #{userHead,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null and userName != ''" >
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="passWord != null and passWord != ''" >
+                #{passWord,jdbcType=VARCHAR},
+            </if>
+            <if test="thirdPartyId != null and thirdPartyId != ''" >
+                #{thirdPartyId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

@@ -3,8 +3,8 @@
  */
 package com.realMoney.utils.response;
 
-import com.realMoney.common.enums.ErrorEnum;
-import com.realMoney.common.exception.CommonException;
+import com.realMoney.common.result.enums.ErrorEnum;
+import com.realMoney.common.result.exception.CommonException;
 import org.apache.commons.lang3.StringUtils;
 
 public class ResponseUtil {
@@ -20,7 +20,7 @@ public class ResponseUtil {
         return new Response(ResponseCode.SUCCESS.getCode(), flag, data);
     }
 
-    public static <T> Response<T> buildErrorResponse(String code, String msg) {
+    public static <T> Response<T> buildErrorResponse(Integer code, String msg) {
         return new Response(code, msg);
     }
 
